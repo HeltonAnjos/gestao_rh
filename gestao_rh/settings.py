@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'empresas.apps.EmpresasConfig',
     'funcionarios.apps.FuncionariosConfig',
     'departamentos.apps.DepartamentosConfig',
+    'registro_hora_extra.apps.RegistroHoraExtraConfig',
+    'documentos.apps.DocumentosConfig',
 ]
 
 MIDDLEWARE = [

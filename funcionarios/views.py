@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.views.generic import View
+from .models import Funcionario
+from django.http import HttpResponse    
 
-# Create your views here.
+
+def Home(request):
+    return HttpResponse('olá')
+#class Home(View):
+   # model = Funcionario
+   # template_name = 'index.html'

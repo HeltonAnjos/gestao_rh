@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'departamentos.apps.DepartamentosConfig',
     'registro_hora_extra.apps.RegistroHoraExtraConfig',
     'documentos.apps.DocumentosConfig',
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -111,6 +112,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

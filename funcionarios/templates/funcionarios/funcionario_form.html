@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+Editar
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+
+</form>
+<a class="btn btn-primary" href="{% url 'list_funcionarios' %}" role="button">Voltar</a><br><br>
+
+{% for documento in object.documento_set.all  %}
+    <a href="{{ documento.arquivo.url }}">{{ documento }}</a><br><br>
+{% endfor %}
+
+{% if object %}
+<a class="btn btn-success" href="{% url 'create_documento' object.id %}" role="button">Adicionar documento</a><br>
+{% endif %}
+{% endblock %}

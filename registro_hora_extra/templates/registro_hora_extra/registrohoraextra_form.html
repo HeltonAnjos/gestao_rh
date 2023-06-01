@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block main %}
 
 <h2 class="text-center">Hora extra</h2>
@@ -12,13 +14,21 @@
     <button type="submit" class="btn btn-success">Salvar</button>
 
     {% if object %}
-        <a class="btn btn-danger" href= "{% url 'delete_horaextra' object.id %}">Deletar</a>
+    <a class="btn btn-danger" href= "{% url 'delete_horaextra' object.id %}">Deletar</a>
+    <button class="btn-primary" onclick="utilizouHoraExtra({{object.id}})" type="button">Marcar hora extra utilizada</button>
+    <button class="btn-primary" onclick="naoUtilizouHoraExtra({{object.id}})" type="button">Marcar hora extra como não utilizada</button>
     {% endif %}
-
-
 </form>
 <br>
+
+<h2 id="horas_atualizadas"> {{ object.funcionario.total_horas_extra }} </h2>
+<h2 id="mensagem"></h2>
 <a class="btn btn-primary" href="{% url 'list_horaextra' %}" role="button">Voltar</a><br>
 
+
+{% block static %}
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/funcoes-ajax.js' %}"></script>
+{% endblock %}
 
 {% endblock %}

@@ -14,11 +14,30 @@ Editar
 </form>
 <a class="btn btn-primary" href="{% url 'list_funcionarios' %}" role="button">Voltar</a><br><br>
 
+<h2>Documentos</h2>
+<lu>
 {% for documento in object.documento_set.all  %}
-    <a href="{{ documento.arquivo.url }}">{{ documento }}</a><br><br>
+    <li>
+        <a href="{{ documento.arquivo.url }}">{{ documento }}</a><br><br>
+    </li>
 {% endfor %}
-
+</lu>
 {% if object %}
 <a class="btn btn-success" href="{% url 'create_documento' object.id %}" role="button">Adicionar documento</a><br>
 {% endif %}
+
+<h2>Banco de horas</h2>
+<lu>
+{% for registro_hora in object.registrohoraextra_set.all  %}
+    <li>
+        <a href="{% url 'update_horaextra' object.id %}">{{ registro_hora.motivo }} | {{ registro_hora.horas }}</a><br><br>
+    </li>
+{% endfor %}
+</lu>
+{% if object %}
+<a class="btn btn-success" href="{% url 'create_horaextra' %}" role="button">Adicionar horaextra</a><br>
+{% endif %}
+
+<h4>Total de horas extras: {{ object.total_horas_extra }}</h4>
+
 {% endblock %}
